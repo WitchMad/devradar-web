@@ -10,11 +10,16 @@ import './Main.css';
 
 function App() {
   const [devs, setDevs] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function loadDevs() {
+      setLoading(true);
       const response = await api.get('/devs');
       setDevs(response.data);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000)
     }
     loadDevs();
   }, []);
@@ -31,17 +36,23 @@ function App() {
 
   return (
     <div id="app">
-      <aside>
-        <strong>Cadastrar</strong>
-        <DevForm onSubmit={handleSubmit}/>
-      </aside>
-      <main>
-        <ul>
-          {devs.length !== 0 ? devs.map(dev => (
-            <DevItem key={dev._id} dev={dev} />
-          )) : <h2>Nenhum usuário cadastrado</h2>}
-        </ul>
-      </main>
+      {loading ? (
+        <h2 className="loadText">Carregando...</h2>
+      ) : (
+        <>
+          <aside>
+            <strong>Cadastrar</strong>
+            <DevForm onSubmit={handleSubmit} />
+          </aside>
+          <main>
+            <ul>
+              {devs.length !== 0 ? devs.map((dev, index) => (
+                <DevItem key={dev._id} dev={dev} index={index} />
+              )) : <h2>Nenhum usuário cadastrado</h2>}
+            </ul>
+          </main>
+        </>
+      )}
     </div>
   );
 }

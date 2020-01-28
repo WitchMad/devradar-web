@@ -1,8 +1,19 @@
+@keyframes fadeDevItem {
+  0% {
+    opacity: 0;
+    transform: scale(1.05)translateX(-50px);
+  } 100% {
+    opacity: 1;
+    transform: scale(1)translateX(0);
+  }
+}
 li.dev-item {
   background:#fff;
   box-shadow: 0 0 14px 0 rgba(0,0,0,0.02);
   border-radius:2px;
   padding:20px;
+  animation: fadeDevItem 300ms linear;
+  animation-fill-mode: backwards;
 }
 li.dev-item header {
   display: flex;

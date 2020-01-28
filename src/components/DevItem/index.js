@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.css';
 
-export default function DevItem({ dev }) {
+export default function DevItem({ dev, index }) {
   return (
-    <li className="dev-item">
+    <li className="dev-item" style={{ animationDelay: `${index + 1}00ms` }}>
     <header>
       <img src={dev.avatar_url} alt={dev.name} />
       <div className="user-info">

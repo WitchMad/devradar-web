@@ -1,5 +1,7 @@
 form {
   margin-top:30px;
+  position:relative;
+  padding-bottom:10px;
 }
 form .input-block + .input-block {
   margin-top:20px;
@@ -26,19 +28,25 @@ form .input-block input{
   color:#666;
   border:0;
   border-bottom:1px solid #eee;
+  transition: 300ms all;
+}
+form .input-block input:focus {
+  border-bottom:1px solid #7d40e7;
 }
 form button[type=submit] {
   width:100%;
   border:0;
   margin-top:30px;
   background:#7d40e7;
-  border-radius:2px;
+  border-radius:40px;
   padding:15px 20px;
   font-size:16px;
   font-weight: bold;
   color:#fff;
   cursor:pointer;
   transition: background 500ms;
+  position:absolute;
+  bottom:-60px;
 }
 form button[type=submit]:hover {
   background:#6931ca;
